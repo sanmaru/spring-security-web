@@ -30,14 +30,14 @@ public class RootController {
         Enumeration enumSession = session.getAttributeNames();
         while(enumSession.hasMoreElements()){
             String key = (String) enumSession.nextElement();
-            System.out.println(key + " : " + session.getAttribute(key));
+            logger.info("======= " + key + " : " + session.getAttribute(key));
         }
         model.addAttribute("userName", "userName");
         model.addAttribute("clientName", "clientName");
         model.addAttribute("userAttributes", oAuth2User.getAttributes());
 
-        System.out.println("AccessToken : " + authorizedClient.getAccessToken().getTokenValue());
-        System.out.println("RefreshToken : " + authorizedClient.getRefreshToken().getTokenValue());
+        logger.info("======= " + "AccessToken : " + authorizedClient.getAccessToken().getTokenValue());
+        logger.info("======= " + "RefreshToken : " + authorizedClient.getRefreshToken().getTokenValue());
         return "index";
     }
 }

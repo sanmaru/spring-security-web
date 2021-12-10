@@ -24,9 +24,9 @@ spring:
             redirect-uri: http://127.0.0.1:8080/login/oauth2/code/login-client
             scope: openid,profile
             client-name: Spring
-          google:
-            client-id: 777605489905-aukcpdg07r1sk6pc4hge2f2kd8sg129i.apps.googleusercontent.com
-            client-secret: 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
+#          google:
+#            client-id: 777605489905-aukcpdg07r1sk6pc4hge2f2kd8sg129i.apps.googleusercontent.com
+#            client-secret: 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
         provider:
           spring:
             authorization-uri: http://localhost:9000/oauth2/authorize
