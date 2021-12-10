@@ -10,22 +10,6 @@
 		<span style="font-weight:bold">User: </span><span sec:authentication="name"></span>
 	</div>
 	<div style="float:none">&nbsp;</div>
-	<!--div style="float:right">
-		<form action="#" th:action="@{/logout}" method="post">
-			<input type="submit" value="Logout" />
-		</form>
-	</div-->
-	<!--div style="float:right">
-		<form action='http://127.0.0.1:9000/logout' method="post">
-			<input type="submit" value="Logout" />
-		</form>
-	</div-->
-	<div style="float:right">
-		<form class="form-inline" th:action="@{/logout}" method="post">
-			<input type="submit" value="Log out" />
-			<input type="hidden" name="_csrf" value="${_csrf}"/>
-		</form>
-	</div>
 </div>
 <h1>OAuth 2.0 Login with Spring Security</h1>
 <div>

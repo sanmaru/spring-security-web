@@ -5,6 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.server.ServletServerHttpRequest;
+import org.springframework.security.web.csrf.CsrfToken;
+import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.util.UriComponents;
@@ -25,6 +27,10 @@ public class LoopbackIpRedirectFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
+        CsrfToken token = new HttpSessionCsrfTokenRepository().loadToken(request);
+        if (token != null) {
+            logger.info("======= " + "CsrfToken : " + token.getToken());
+        }
         if (request.getServerName().equals("localhost") && request.getHeader("host") != null) {
             UriComponents uri = UriComponentsBuilder.fromHttpRequest(new ServletServerHttpRequest(request))
                     .host("127.0.0.1").build();
